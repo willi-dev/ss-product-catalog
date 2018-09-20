@@ -13,8 +13,8 @@ class ProductItem extends Component {
     return (
       <div className="ss-product__item">
       	<ProductImage />
-      	<ProductTitle />
-      	<ProductPrice />
+      	<ProductTitle title={this.props.dataItem.product_title} />
+      	<ProductPrice price={this.props.dataItem.product_price} />
       	<ProductSize />
       	<ProductDescription />
       	<ProductAddToCart />
