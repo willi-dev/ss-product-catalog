@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ProductItem from '../productitem/ProductItem';
 
 class ProductList extends Component {
 
@@ -6,6 +7,8 @@ class ProductList extends Component {
     return (
       <div className="ss-product__list">
 
+      	<ProductItem />
+      	
       </div>
     );
   }
