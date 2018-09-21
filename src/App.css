@@ -1,0 +1,20 @@
+.ss-product__box{
+	padding:1rem;
+	border: 1px solid #ccc;
+	margin: 1rem 0;
+}
+
+.ss-product__size .ss-product__list{
+	list-style-type: none;
+	padding-left: 0;
+}
+.ss-product__size .ss-product__list li{
+	display : inline-block;
+	font-size: .7rem;
+	padding: .3rem .5rem;
+	border: 1px solid #666;
+	margin-left:.5rem;
+}
+.btn.btn-ss{
+	border-radius: 0;
+}
