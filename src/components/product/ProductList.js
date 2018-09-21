@@ -28,13 +28,18 @@ class ProductList extends Component {
 		let dataProducts = (nextPage === 1 ) 
       ? firebaseConfig.database().ref(refCollectionName).orderByKey().limitToLast( perPage ) 
       : firebaseConfig.database().ref(refCollectionName).orderByKey().endAt( lastKey ).limitToLast( perPage+1 );
-
+    
 		dataProducts.on( 'value', snapshot => {
+      // console.log( snapshot.val() );
+      // get keys of value data product for reverse order
 			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort().reverse() : Object.keys( snapshot.val() ).sort().reverse().slice(1);
-			console.log(arrayOfKeys)
+			// console.log(arrayOfKeys);
+
 			let arrayProducts = arrayOfKeys.map( (val, key) => (
 				snapshot.val()[val]
 			))
+
+      console.log( arrayProducts );
 
 			this.setState({
 				lastKey: arrayOfKeys[arrayOfKeys.length-1],

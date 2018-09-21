@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import ProductTitle from './ProductTitle';
 import ProductImage from './ProductImage';
 import ProductPrice from './ProductPrice';

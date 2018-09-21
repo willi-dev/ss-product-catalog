@@ -11,7 +11,7 @@ class ProductItem extends Component {
 
   render() {
     const linkTo = {
-      pathname: '/product/'+this.props.dataItem.product_title,
+      pathname: '/product/'+this.props.dataItem.product_slug,
       dataItem: this.props.dataItem
     }
     return (
