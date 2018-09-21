@@ -12,11 +12,11 @@ class ProductDetail extends Component {
   render() {
     return (
       <div className="ss-product__box ss-product__detail">
-        <ProductImage />
-        <ProductTitle title={this.props.dataItem.product_title} />
-        <ProductPrice price={this.props.dataItem.product_price} />
-        <ProductSize />
-        <ProductDescription />
+        <ProductImage url={this.props.location.dataItem.product_image}/>
+        <ProductTitle title={this.props.location.dataItem.product_title} />
+        <ProductPrice price={this.props.location.dataItem.product_price} />
+        <ProductSize size={this.props.location.dataItem.product_size} />
+        <ProductDescription desc={this.props.location.dataItem.product_description}/>
         <ProductAddToCart />
       </div>
     );

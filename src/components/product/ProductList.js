@@ -8,7 +8,8 @@ let INITIAL_STATE = {
 	lastPage: false,
 	products: []
 }
-const perPage = 3;
+// display product per page 
+const perPage = 5;
 
 class ProductList extends Component {
 
@@ -23,7 +24,10 @@ class ProductList extends Component {
 	 */
 	loadProducts = () => {
 		let { lastKey, lastPage, nextPage, products } = this.state;
-		let dataProducts = (nextPage === 1 ) ? firebaseConfig.database().ref('/products_example').orderByKey().limitToLast( perPage ) : firebaseConfig.database().ref('/products_example').orderByKey.entAt(lastKey).limitToLast(perPage+1);
+    const refCollectionName = '/products_example';
+		let dataProducts = (nextPage === 1 ) 
+      ? firebaseConfig.database().ref(refCollectionName).orderByKey().limitToLast( perPage ) 
+      : firebaseConfig.database().ref(refCollectionName).orderByKey().endAt( lastKey ).limitToLast( perPage+1 );
 
 		dataProducts.on( 'value', snapshot => {
 			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort().reverse() : Object.keys( snapshot.val() ).sort().reverse().slice(1);
@@ -43,8 +47,8 @@ class ProductList extends Component {
 	}
 
 	componentWillMount() {
+    // load products 
 		this.loadProducts();
-
 	}
 
   render() {
@@ -56,7 +60,6 @@ class ProductList extends Component {
 	    			<ProductItem key={index} dataItem={item}/>
       		))
       	}
-
       </div>
     );
   }

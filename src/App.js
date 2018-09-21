@@ -10,10 +10,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Switch>
-          <Route exact path="/" component={ProductList} />
-          <Route path="/product/:product" component={ProductDetail} />
-        </Switch>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 offset-md-3">
+              <Switch>
+                <Route exact path="/" component={ProductList} />
+                <Route path="/product/:product" component={ProductDetail} />
+              </Switch>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
