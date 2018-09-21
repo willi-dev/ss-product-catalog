@@ -5,7 +5,7 @@ class ProductTitle extends Component {
   render() {
     return (
       <div className="ss-product__title">
-        <p>title</p>
+        <p>{this.props.title}</p>
       </div>
     );
   }
