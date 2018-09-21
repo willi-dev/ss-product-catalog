@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductItem from '../productitem/ProductItem';
+import ProductItem from './ProductItem';
 import { firebaseConfig } from '../../services/firebase';
 
 let INITIAL_STATE = {
@@ -23,7 +23,6 @@ class ProductList extends Component {
 	 */
 	loadProducts = () => {
 		let { lastKey, lastPage, nextPage, products } = this.state;
-
 		let dataProducts = (nextPage === 1 ) ? firebaseConfig.database().ref('/products_example').orderByKey().limitToLast( perPage ) : firebaseConfig.database().ref('/products_example').orderByKey.entAt(lastKey).limitToLast(perPage+1);
 
 		dataProducts.on( 'value', snapshot => {

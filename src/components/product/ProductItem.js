@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import ProductTitle from './ProductTitle';
 import ProductImage from './ProductImage';
@@ -10,13 +11,19 @@ import ProductAddToCart from './ProductAddToCart';
 class ProductItem extends Component {
 
   render() {
+    const linkTo = {
+      pathname: '/product/'+this.props.dataItem.product_title
+      dataItem: this.props.dataItem
+    }
     return (
-      <div className="ss-product__item">
+      <div className="ss-product__box ss-product__item">
+        <Link to=
       	<ProductImage />
-      	<ProductTitle title={this.props.dataItem.product_title} />
+        <Link to={ linkTo }>
+          <ProductTitle title={this.props.dataItem.product_title} />
+        </Link>
       	<ProductPrice price={this.props.dataItem.product_price} />
       	<ProductSize />
-      	<ProductDescription />
       	<ProductAddToCart />
       </div>
     );

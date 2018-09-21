@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import ProductItem from './components/productitem/ProductItem';
-import ProductList from './components/productlist/ProductList';
+
+import ProductList from './components/product/ProductList';
+import ProductDetail from './components/product/ProductDetail';
 
 import './App.css';
 
@@ -11,7 +12,7 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/" component={ProductList} />
-          <Route path="/product/:productname" component={ProductItem} />
+          <Route path="/product/:product" component={ProductDetail} />
         </Switch>
       </div>
     );
