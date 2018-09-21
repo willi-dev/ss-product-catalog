@@ -7,7 +7,8 @@ let INITIAL_STATE = {
 	nextPage: 1,
 	lastPage: false,
 	products: [],
-  isLoading: false
+  isLoading: false,
+  messageLast: '',
 }
 // display product per page 
 const perPage = 5;
@@ -25,7 +26,7 @@ class ProductList extends Component {
    */
   scrollLoad = () => {
     let { isLoading, lastPage } = this.state;
-    
+
     if( isLoading || lastPage ) return;
 
     if ( window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight ){
@@ -57,7 +58,8 @@ class ProductList extends Component {
 				snapshot.val()[val]
 			))
 
-      console.log( arrayProducts );
+      // console.log( arrayProducts );
+      console.log( 'numChildren data :' + snapshot.numChildren() );
 
 			this.setState({
 				lastKey: arrayOfKeys[arrayOfKeys.length-1],
@@ -76,7 +78,7 @@ class ProductList extends Component {
 	}
 
   render() {
-  	let { products } =  this.state;
+  	let { lastPage, products } =  this.state;
     return (
       <div className="ss-product__list">
       	{
@@ -84,6 +86,12 @@ class ProductList extends Component {
 	    			<ProductItem key={index} dataItem={item}/>
       		))
       	}
+
+        {
+          ( lastPage ) && (
+            <h6>Semua Product telah ditampilkan :)</h6>
+          )
+        }
       </div>
     );
   }
