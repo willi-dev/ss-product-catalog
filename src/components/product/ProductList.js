@@ -49,9 +49,9 @@ class ProductList extends Component {
 		dataProducts.on( 'value', snapshot => {
       // console.log( snapshot.val() );
       // get keys of value data product for reverse order
-			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort().reverse() : Object.keys( snapshot.val() ).sort().reverse().slice(1);
+			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse() : Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse().slice(1);
 			
-      // console.log(arrayOfKeys);
+      console.log(arrayOfKeys);
 
 			let arrayProducts = arrayOfKeys.map( (val, key) => (
 				snapshot.val()[val]
