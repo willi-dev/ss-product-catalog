@@ -6,7 +6,8 @@ class ProductSize extends Component {
     let { size } = this.props;
     return (
       <div className="ss-product__size">
-        <ul>
+
+        <ul className="ss-product__list">Size 
           {
             size.map( (item, index ) => (
               <li key={index}>{item}</li>

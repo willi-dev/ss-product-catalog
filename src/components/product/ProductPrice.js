@@ -5,7 +5,7 @@ class ProductPrice extends Component {
   render() {
     return (
       <div className="ss-product__price">
-        {this.props.price}
+       Rp. {this.props.price}
       </div>
     );
   }
