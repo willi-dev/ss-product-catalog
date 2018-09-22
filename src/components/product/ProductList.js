@@ -72,10 +72,7 @@ class ProductList extends Component {
 		});
 	}
 
-	componentWillMount() {
-    // load products 
-		this.loadProducts();
-	}
+	
 
   render() {
   	let { lastPage, products } =  this.state;
@@ -98,7 +95,9 @@ class ProductList extends Component {
   
   componentDidMount() {
     // console.log( this.state );
-    window.addEventListener('scroll', this.scrollLoad)
+    window.addEventListener('scroll', this.scrollLoad);
+
+    this.loadProducts();
   }
 
   componentWillUnmount() {

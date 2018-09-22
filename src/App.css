@@ -18,3 +18,37 @@
 .btn.btn-ss{
 	border-radius: 0;
 }
+
+
+.ss-modal__screen{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba( 0, 0, 0, .5);
+	overflow: hidden;
+}
+.ss-modal__screen--display{
+	display: block;
+}
+.ss-modal__screen--none{
+	display: none;
+}
+
+.ss-modal__content{
+	position: fixed;
+	width: 90%;
+	top: 50%;
+	left: 50%;
+	transform: translate( -50%, -50% );
+	text-align: center;
+}
+.ss-modal__close{
+	position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 2rem;
+  line-height: 2rem;
+  color: #fff;
+}
