@@ -32,7 +32,6 @@ class ProductList extends Component {
     if ( window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight ){
       this.setState({ isLoading: true });
       this.loadProducts();
-
     }
   }
 
@@ -52,7 +51,7 @@ class ProductList extends Component {
       // get keys of value data product for reverse order
 			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse() : Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse().slice(1);
 			
-      console.log(arrayOfKeys);
+      // console.log(arrayOfKeys);
 
 			let arrayProducts = arrayOfKeys.map( (val, key) => (
 				snapshot.val()[val]
@@ -75,14 +74,20 @@ class ProductList extends Component {
 	
 
   render() {
-  	let { lastPage, products } =  this.state;
+  	let { isLoading, lastPage, products } =  this.state;
+    let classList = ( isLoading ) ? 'ss-product__list-box ss-product__list-box--loading': 'ss-product__list-box ss-product__list-box--loaded';
     return (
-      <div className="ss-product__list">
-      	{
-      		products.map( (item, index) => (
-	    			<ProductItem key={index} dataItem={item}/>
-      		))
-      	}
+      <div className={classList}>
+        {
+          ( isLoading ) && (
+            <div className="ss-loading"> load product . . . </div>
+          )
+        }
+        {
+          products.map( (item, index) => (
+            <ProductItem key={index} dataItem={item}/>
+          ))
+        }
 
         {
           ( lastPage ) && (
@@ -91,12 +96,12 @@ class ProductList extends Component {
             </div>
           )
         }
+      	
       </div>
     );
   }
   
   componentDidMount() {
-
     window.addEventListener('scroll', this.scrollLoad);
     // load product
     this.loadProducts();
