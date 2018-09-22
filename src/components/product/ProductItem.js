@@ -12,7 +12,6 @@ class ProductItem extends Component {
   render() {
     const linkTo = {
       pathname: '/product/'+this.props.dataItem.product_slug,
-      dataItem: this.props.dataItem
     }
     return (
       <div className="ss-product__box ss-product__item">
