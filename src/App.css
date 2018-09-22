@@ -1,3 +1,22 @@
+
+/*
+ * google font 
+ */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700');
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+
+a{
+	cursor: pointer;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none !important;
+}
+
+
 .ss-product__box{
 	padding:1rem;
 	border: 1px solid #ccc;
@@ -14,15 +33,21 @@
 	padding: .3rem .5rem;
 	border: 1px solid #666;
 	margin-left:.5rem;
+	width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 50%;
+}
+.ss-product__size .ss-product__list li:first-child{
+	margin-left: 0;
 }
 .btn.btn-ss{
 	border-radius: 0;
 }
 
-
-a{
-	cursor: pointer;
-}
+/*
+ * modal style 
+ */
 .ss-modal__screen{
 	position: fixed;
 	top: 0;
@@ -55,4 +80,26 @@ a{
   line-height: 2rem;
   color: #fff;
   cursor: pointer;
+}
+
+/*
+ * product title 
+ */
+.ss-product__title{
+	color: rgb(82, 82, 82);
+	font-weight: 500;
+	padding: 1rem 0 0;
+}
+
+.ss-product__price h6{
+	font-weight: 700;
+}
+
+.ss-product__description{
+	font-size: .8rem;
+	padding-bottom: 20px;
+}
+
+.ss-product__add-to-cart .btn-ss{
+	width: 100%;
 }

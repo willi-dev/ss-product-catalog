@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductTitle = ( props ) => (
 	<div className="ss-product__title">
-    <p>{props.title}</p>
+    <h5>{props.title}</h5>
   </div>
 );
 

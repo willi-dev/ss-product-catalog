@@ -21,8 +21,9 @@ class ProductItem extends Component {
         <Link to={ linkTo }>
           <ProductTitle title={this.props.dataItem.product_title} />
         </Link>
-      	<ProductPrice price={this.props.dataItem.product_price} />
-      	<ProductSize size={this.props.dataItem.product_size} />
+      	
+        <ProductPrice price={this.props.dataItem.product_price} />
+        <ProductSize size={this.props.dataItem.product_size} />
       	<ProductAddToCart />
       </div>
     );
