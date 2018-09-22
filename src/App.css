@@ -20,6 +20,9 @@
 }
 
 
+a{
+	cursor: pointer;
+}
 .ss-modal__screen{
 	position: fixed;
 	top: 0;
@@ -51,4 +54,5 @@
   font-size: 2rem;
   line-height: 2rem;
   color: #fff;
+  cursor: pointer;
 }

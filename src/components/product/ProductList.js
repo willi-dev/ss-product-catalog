@@ -86,7 +86,9 @@ class ProductList extends Component {
 
         {
           ( lastPage ) && (
-            <h6>Semua Product telah ditampilkan :)</h6>
+            <div className="alert alert-warning">
+              Semua produk telah ditampilkan...
+            </div>
           )
         }
       </div>
@@ -94,9 +96,9 @@ class ProductList extends Component {
   }
   
   componentDidMount() {
-    // console.log( this.state );
-    window.addEventListener('scroll', this.scrollLoad);
 
+    window.addEventListener('scroll', this.scrollLoad);
+    // load product
     this.loadProducts();
   }
 

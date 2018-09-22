@@ -6,34 +6,79 @@ import ProductDescription from './ProductDescription';
 import ProductSize from './ProductSize';
 import ProductAddToCart from './ProductAddToCart';
 import ModalDisplay from '../general/ModalDisplay';
+import { firebaseConfig } from '../../services/firebase';
+
+let INITIAL_STATE = {
+  showModal: false,
+  product_title: '',
+  product_image: '',
+  product_price: '',
+  product_size: [],
+  product_description: '',
+}
 
 class ProductDetail extends Component {
   
-  state = { showModal: false }; 
+  constructor( props ){
+    super(props);
+    this.state = {...INITIAL_STATE};
+  }
 
+  /*
+   * show modal 
+   */
   showModal = () => {
     this.setState({ showModal: true });
   }
 
+  /*
+   * close modal 
+   */
   closeModal = () => {
     this.setState({ showModal: false });
   }
 
+  /*
+   * loadProductDetail 
+   * load product detail base on match params product slug
+   */
+  loadProductDetail = () => {
+    const productSlug = this.props.match.params.product;
+    const refCollectionName = '/products_example';
+    let dataProduct = firebaseConfig.database().ref(refCollectionName).orderByChild('product_slug').equalTo( productSlug );
+    dataProduct.on( 'value', snapshot => {
+      let arrayProd = Object.values( snapshot.val() );
+
+      this.setState({
+        product_image: arrayProd[0].product_image,
+        product_title: arrayProd[0].product_title,
+        product_price: arrayProd[0].product_price,
+        product_size: arrayProd[0].product_size,
+        product_description: arrayProd[0].product_description
+      })
+    });
+  }
+
+  componentDidMount() {
+    // load product detail
+    this.loadProductDetail();
+  }
+
   render() {
-    const { showModal } = this.state;
+    const { showModal, product_image, product_title, product_price, product_size, product_description } = this.state;
+
     return (
       <div className="ss-product__box ss-product__detail">
         <ModalDisplay showModal={showModal} closeModal={this.closeModal}>
-          <ProductImage url={this.props.location.dataItem.product_image}/>
+          <ProductImage url={product_image}/>
         </ModalDisplay>
         <a onClick={this.showModal}>
-        <ProductImage url={this.props.location.dataItem.product_image} onClick={this.showModal}/>
+          <ProductImage url={product_image} onClick={this.showModal}/>
         </a>
-        
-        <ProductTitle title={this.props.location.dataItem.product_title} />
-        <ProductPrice price={this.props.location.dataItem.product_price} />
-        <ProductSize size={this.props.location.dataItem.product_size} />
-        <ProductDescription desc={this.props.location.dataItem.product_description}/>
+        <ProductTitle title={product_title} />
+        <ProductPrice price={product_price} />
+        <ProductSize size={product_size} />
+        <ProductDescription desc={product_description}/>
         <ProductAddToCart />
       </div>
     );
