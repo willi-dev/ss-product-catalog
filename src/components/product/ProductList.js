@@ -28,6 +28,7 @@ class ProductList extends Component {
   scrollLoad = () => {
     let { isLoading, lastPage } = this.state;
 
+    // prevent load new data when isLoading is true or we are on last page
     if( isLoading || lastPage ) return;
 
     if ( window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight ){
@@ -98,12 +99,14 @@ class ProductList extends Component {
   
   componentDidMount() {
     document.body.scrollTop = 0;
+    // add event scroll
     window.addEventListener('scroll', this.scrollLoad);
     // load product
     this.loadProducts();
   }
 
   componentWillUnmount() {
+    // remove event scroll
     window.removeEventListener('scroll', this.scrollLoad);
   }
 
