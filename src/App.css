@@ -124,12 +124,18 @@ a:hover{
 /*
  * product title 
  */
+
 .ss-product__title{
 	color: rgb(82, 82, 82);
 	font-weight: 500;
 	padding: 1rem 0 0;
 }
-
+.ss-product__item .ss-product__title h5{
+	font-size: 1.25rem;
+}
+.ss-product__detail .ss-product__title h5{
+	font-size: 1.5rem;
+}
 .ss-product__price h6{
 	font-weight: 700;
 }
