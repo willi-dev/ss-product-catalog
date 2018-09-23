@@ -1,6 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-Use Firebase as a database platform.
+Use Firebase as a database platform. 
+- load 5 data per page 
+- total data: 17 products
+
 
 ## Step to Run on your local machine
 (i assume Node Js and NPM package manager have installed on your machine)
@@ -8,7 +11,6 @@ Use Firebase as a database platform.
 
 ```
 git clone https://github.com/willi-dev/ss-product-catalog.git
-
 ```
 
 2. next step after clone project
