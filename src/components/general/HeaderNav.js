@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HeaderNav = ( ) => (
-	<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+	<nav className="navbar navbar-expand-md navbar-dark bg-dark">
     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSalestock" aria-controls="navbarSalestock" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>

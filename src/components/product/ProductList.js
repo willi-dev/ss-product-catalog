@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProductItem from './ProductItem';
+import Loading from '../general/Loading';
 import { firebaseConfig } from '../../services/firebase';
 
 let INITIAL_STATE = {
@@ -7,7 +8,7 @@ let INITIAL_STATE = {
 	nextPage: 1,
 	lastPage: false,
 	products: [],
-  isLoading: false,
+  isLoading: true,
   messageLast: '',
 }
 // display product per page 
@@ -47,18 +48,13 @@ class ProductList extends Component {
       : firebaseConfig.database().ref(refCollectionName).orderByKey().endAt( lastKey ).limitToLast(perPage+1);
     
 		dataProducts.on( 'value', snapshot => {
-      // console.log( snapshot.val() );
+
       // get keys of value data product for reverse order
 			let arrayOfKeys = ( nextPage === 1 ) ? Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse() : Object.keys( snapshot.val() ).sort( function(a, b) {return a - b} ).reverse().slice(1);
 			
-      // console.log(arrayOfKeys);
-
 			let arrayProducts = arrayOfKeys.map( (val, key) => (
 				snapshot.val()[val]
 			))
-
-      // console.log( arrayProducts );
-      console.log( 'numChildren data :' + snapshot.numChildren() );
 
 			this.setState({
 				lastKey: arrayOfKeys[arrayOfKeys.length-1],
@@ -75,12 +71,12 @@ class ProductList extends Component {
 
   render() {
   	let { isLoading, lastPage, products } =  this.state;
-    let classList = ( isLoading ) ? 'ss-product__list-box ss-product__list-box--loading': 'ss-product__list-box ss-product__list-box--loaded';
+    let classList = ( isLoading ) ? 'ss-container-loading ss-product__list-box ss-product__list-box--loading': 'ss-product__list-box ss-product__list-box--loaded';
     return (
       <div className={classList}>
         {
           ( isLoading ) && (
-            <div className="ss-loading"> load product . . . </div>
+            <Loading />
           )
         }
         {

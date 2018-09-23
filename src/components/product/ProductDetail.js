@@ -6,10 +6,12 @@ import ProductDescription from './ProductDescription';
 import ProductSize from './ProductSize';
 import ProductAddToCart from './ProductAddToCart';
 import ModalDisplay from '../general/ModalDisplay';
+import Loading from '../general/Loading';
 import { firebaseConfig } from '../../services/firebase';
 
 let INITIAL_STATE = {
   showModal: false,
+  isLoading: true,
   product_title: '',
   product_image: '',
   product_price: '',
@@ -50,6 +52,7 @@ class ProductDetail extends Component {
       let arrayProd = Object.values( snapshot.val() );
 
       this.setState({
+        isLoading: false,
         product_image: arrayProd[0].product_image,
         product_title: arrayProd[0].product_title,
         product_price: arrayProd[0].product_price,
@@ -65,21 +68,29 @@ class ProductDetail extends Component {
   }
 
   render() {
-    const { showModal, product_image, product_title, product_price, product_size, product_description } = this.state;
-
+    const { isLoading, showModal, product_image, product_title, product_price, product_size, product_description } = this.state;
+    let elClass = ( isLoading ) ? 'ss-product__box ss-product__detail ss-hide': 'ss-product__box ss-product__detail ss-block'
+    let ssContainer = ( isLoading ) ? 'ss-container-loading': '';
     return (
-      <div className="ss-product__box ss-product__detail">
-        <ModalDisplay showModal={showModal} closeModal={this.closeModal}>
-          <ProductImage url={product_image}/>
-        </ModalDisplay>
-        <a onClick={this.showModal}>
-          <ProductImage url={product_image} onClick={this.showModal}/>
-        </a>
-        <ProductTitle title={product_title} />
-        <ProductPrice price={product_price} />
-        <ProductSize size={product_size} />
-        <ProductDescription desc={product_description}/>
-        <ProductAddToCart />
+      <div className={ssContainer}>
+        { 
+          ( isLoading ) && (
+            <Loading />
+          )
+        }
+        <div className={elClass}>
+          <ModalDisplay showModal={showModal} closeModal={this.closeModal}>
+            <ProductImage url={product_image}/>
+          </ModalDisplay>
+          <a onClick={this.showModal}>
+            <ProductImage url={product_image} onClick={this.showModal}/>
+          </a>
+          <ProductTitle title={product_title} />
+          <ProductPrice price={product_price} />
+          <ProductSize size={product_size} />
+          <ProductDescription desc={product_description}/>
+          <ProductAddToCart />
+        </div>
       </div>
     );
   }

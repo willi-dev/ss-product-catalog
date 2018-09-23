@@ -15,12 +15,21 @@ a{
 a:hover{
 	text-decoration: none !important;
 }
-
+.ss-container-loading{
+	position: relative;
+	height: 80vh;
+}
 .ss-loading{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+.ss-hide{
+	display: none;
+}
+.ss-block{
+	display: block;
 }
 .ss-product__box{
 	padding:1rem;
@@ -31,10 +40,10 @@ a:hover{
 	position: relative;
 }
 .ss-product__list-box--loaded{
-	height: auto;
+	/*height: auto;*/
 }
 .ss-product__list-box--loading{
-	height: 100vh;
+	/*height: 100vh;*/
 }
 
 
