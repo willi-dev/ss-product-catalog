@@ -97,6 +97,7 @@ class ProductList extends Component {
   }
   
   componentDidMount() {
+    document.body.scrollTop = 0;
     window.addEventListener('scroll', this.scrollLoad);
     // load product
     this.loadProducts();
